@@ -21,7 +21,9 @@ if ( !class_exists( 'WP_InstantClick' ) ):
                 return;
 
             self::_add_action_or_do( 'init', array( __CLASS__, '_register_scripts' ), 1 );
-            self::_add_action_or_do( 'wp_enqueue_scripts', array( __CLASS__, '_enqueue_scripts' ), 1 );
+
+            if ( !is_admin() )
+                self::_add_action_or_do( 'wp_enqueue_scripts', array( __CLASS__, '_enqueue_scripts' ), 1 );
 
             self::$_enabled = true;
         }
