@@ -30,7 +30,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
             private static function _add_action_or_do( $hook, $callback, $priority = 10 ) {
                 if ( did_action( $hook ) || doing_action( $hook ) )
-                    call_user_func_array( $callback );
+                    call_user_func( $callback );
                 else
                     add_action( $hook, $callback, $priority );
             }
