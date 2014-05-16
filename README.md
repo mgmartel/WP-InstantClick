@@ -1,7 +1,7 @@
 WP InstantClick
 =========
 
-WP InstantClick is a simple plugin that adds InstantClick to your WordPress website instantly.
+WP InstantClick is a simple plugin that adds [InstantClick](https://github.com/dieulot/instantclick/) to your WordPress website instantly.
 
 What is it?
 ---
@@ -15,6 +15,11 @@ You can either use the plugin as-is, or include the files in your theme.
 
 * **As a plugin:** Add the plugin to your WordPress website and activate it. InstantClick will do the rest. See instructions below on how to add the `data-no-instant` attribute to specific scripts.
 * **Part of your theme:** Add all files from this repo to your theme. In your `functions.php` (or whatever place you use for your theme scripts) add include `class-wp-instantclick.php`. After this, call `WP_InstantClick::enable();`.
+
+By default, InstantClick will start preloading as soon as the visitor hovers over a link. This may not be the ideal setup for your website. You can tell InstantClick to preload only after a delay or on mousedown. Use the following methods to set that up:
+
+* **On mousedown:** `WP_InstantClick::preload_on_mousedown();`
+* **On hover after a delay**: `WP_InstantClick::preload_on_hover( $delay );`
 
 Fine Tuning
 ---

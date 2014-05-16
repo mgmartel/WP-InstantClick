@@ -14,6 +14,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
         private static $no_instant = array( self::SCRIPT_HANDLE );
 
         private static $_enabled  = false;
+        private static $_preload_method = '';
 
         public static function enable() {
             if ( self::is_enabled() )
@@ -40,7 +41,17 @@ if ( !class_exists( 'WP_InstantClick' ) ):
             if ( !in_array( $handle, self::$no_instant ) )
                 self::$no_instant[] = $handle;
         }
-        
+
+        public static function preload_on_mousedown() {
+            self::$_preload_method = "'mousedown'";
+        }
+
+        public static function preload_on_hover( $delay ) {
+            if ( is_numeric( $delay ) && $delay > 0 )
+                self::$_preload_method = (int) $delay;
+            else
+                self::$_preload_method = 0;
+        }
 
         //
         // HOOKABLES
@@ -96,7 +107,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
             <script data-no-instant>
                 <?php do_action( 'instantclick_before_init' ); ?>
 
-                InstantClick.init();
+                InstantClick.init(<?php echo self::$_preload_method ?>);
                 <?php do_action( 'instantclick_after_init' ); ?>
             </script>
             <?php
