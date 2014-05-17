@@ -106,11 +106,13 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
         public static function _output_script_init() {
             ?>
+
             <script data-no-instant>
                 <?php do_action( 'instantclick_before_init' ); ?>
 
                 InstantClick.init(<?php echo self::$_preload_method ?>);
                 <?php do_action( 'instantclick_after_init' ); ?>
+                    
             </script>
             <?php
         }
