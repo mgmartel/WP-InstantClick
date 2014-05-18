@@ -61,7 +61,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
         public static function _register_scripts() {
             $min = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-            wp_register_script( self::SCRIPT_HANDLE, self::_get_url() . "js/instantclick$min.js", array(), '3.0.1', true );
+            wp_register_script( self::SCRIPT_HANDLE, self::get_url() . "js/instantclick$min.js", array(), '3.0.1', true );
         }
 
             /**
@@ -69,7 +69,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
              * so we need to find out the url to the current folder in a
              * roundabout way.
              */
-            private static function _get_url() {
+            public static function get_url() {
                 // get and normalize framework dirname
                 $dirname = str_replace( '\\' ,'/', dirname( __FILE__ ) ); // standardize slash
                 $dirname = preg_replace( '|/+|', '/', $dirname );       // normalize duplicate slash
@@ -112,7 +112,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
                 InstantClick.init(<?php echo self::$_preload_method ?>);
                 <?php do_action( 'instantclick_after_init' ); ?>
-                    
+
             </script>
             <?php
         }
