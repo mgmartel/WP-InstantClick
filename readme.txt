@@ -23,34 +23,17 @@ This plugin simply adds InstantClick to your website using the WordPress scripts
 
 Install and activate the plugin. InstantClick should be automatically added to your website.
 
-By default, InstantClick will start preloading as soon as the visitor hovers over a link. This may not be the ideal setup for your website. You can tell InstantClick to preload only after a delay or on mousedown. Add the following lines to your theme's `functions.php` or your functions plugin to change the default behaviour:
-
-* **On mousedown:** `WP_InstantClick::preload_on_mousedown();`
-* **On hover after a delay**: `WP_InstantClick::preload_on_hover( $delay_in_ms );`
-
 = Fine Tuning =
 
-See the documentation on [InstantClick.io](http://instantclick.io/download) for details on how the script works and how to ensure compatibility with other scripts. WordPress does not allow you to add `data-` attributes to enqueued scripts out of the box, so the `WP_InstantClick` class includes a method for adding the `data-no-instant` attribute. After enqueueing a script, simply call `WP_InstantClick::no_instant( $handle )` with the handle of the script. For example:
+In WP-Admin you will find a new options page called 'InstantClick' under 'Settings'. On the options page you can:
 
-`
-add_action( 'wp_enqueue_scripts', 'my_theme_script_enqueue' );
-function my_theme_script_enqueue() {
-    wp_enqueue_script( 'my-script-handle' );
-    WP_InstantClick::no_instant( 'my-script-handle' );
-}
-`
+* Set the preload mode (on hover with a 0, 50 or 100ms delay, or on mousedown)
+* Exclude scripts from reloading with InstantClick (adding `data-no-instant`)
+* Add custom JavaScript to be loaded before or after InstantClick has initialized
 
-To add any extra scripts, use the hooks `instantclick_before_init` and `instantclick_after_init`, called inside the `<script>` tag before and after `InstantClick.init();` respectively. For example:
+See the documentation on [InstantClick.io](http://instantclick.io/download) for details on how the script works and how to ensure compatibility with other scripts. To add the `data-no-instant` attribute to scripts, use the 'No-Instant Scripts' setting on the options page.
 
-`
-add_action( 'instantclick_before_init', function() {
-    ?>
-    InstantClick.on('change', function() {
-        ga('send', 'pageview', location.pathname + location.search);
-    });
-    <?php
-});
-`
+To add any custom JavaScript around the InstantClick initialization, use the script editor on the admin page.
 
 == Frequently Asked Questions ==
 
