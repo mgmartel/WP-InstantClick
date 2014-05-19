@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== InstantClick ===
 Contributors: Mike_Cowobo
 Tags: performance, instantclick, links
 Requires at least: 3.9
@@ -41,6 +41,7 @@ None yet. Checkout the [support forum](http://wordpress.org/support/plugin/insta
 
 == Screenshots ==
 
+1. The InstantClick settings page
 
 == Changelog ==
 
