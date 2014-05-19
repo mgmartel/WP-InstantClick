@@ -3,11 +3,11 @@ Contributors: Mike_Cowobo
 Tags: performance, instantclick, links
 Requires at least: 3.9
 Tested up to: 3.9.1
-Stable tag: 0.9
+Stable tag: 1.0
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
-Dramatically speed up your website and make navigation effectively instant by loading the next link on hover.
+Dramatically speed up your WordPress site and make navigation effectively instant by loading the next link on hover.
 
 == Description ==
 
@@ -37,7 +37,7 @@ To add any custom JavaScript around the InstantClick initialization, use the scr
 
 == Frequently Asked Questions ==
 
-None yet. Checkout the support forum, the [GitHub repo](https://github.com/mgmartel/WP-InstantClick) and [InstantClick](http://instantclick.io) website for the answers to most questions.
+None yet. Checkout the [support forum](http://wordpress.org/support/plugin/instantclick), the [GitHub repo](https://github.com/mgmartel/WP-InstantClick) and [InstantClick](http://instantclick.io) website for the answers to most questions.
 
 == Screenshots ==
 

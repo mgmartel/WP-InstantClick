@@ -1,7 +1,7 @@
 WP InstantClick
 =========
 
-WP InstantClick is a simple plugin that adds [InstantClick](https://github.com/dieulot/instantclick/) to your WordPress website instantly.
+WP InstantClick is a simple plugin that adds [InstantClick](https://github.com/dieulot/instantclick/) to your WordPress website instantly. Also on [WP.org](http://wordpress.org/plugins/instantclick/).
 
 What is it?
 ---
