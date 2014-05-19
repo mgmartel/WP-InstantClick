@@ -3,7 +3,7 @@
 Plugin Name: InstantClick
 Plugin URI: http://cacheglove.com/2014/05/speed-up-your-wordpress-site-with-instantclick/
 Description: Dramatically speed up your WordPress site with InstantClick
-Version: 1.0
+Version: 1.0.1
 Author: Mike Martel
 Author URI: http://trenvo.com
 */
