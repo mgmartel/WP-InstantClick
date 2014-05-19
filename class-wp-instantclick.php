@@ -8,7 +8,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
     class WP_InstantClick
     {
-        const VERSION = '1.0';
+        const VERSION = '1.0.1';
         const SCRIPT_HANDLE = 'instantclick';
 
         private static $no_instant = array( self::SCRIPT_HANDLE );

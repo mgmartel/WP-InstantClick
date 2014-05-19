@@ -3,7 +3,7 @@ Contributors: Mike_Cowobo
 Tags: performance, instantclick, links
 Requires at least: 3.9
 Tested up to: 3.9.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -11,13 +11,13 @@ Dramatically speed up your WordPress site and make navigation effectively instan
 
 == Description ==
 
-InstantClick is a JavaScript library that dramatically speeds up your website, making navigation effectively instant in most cases. This plugin is the easiest way of adding InstantClick to your WordPress theme.
-
-See [InstantClick.io](http://instantclick.io/) for more information on InstantClick. In summary:
+InstantClick dramatically speeds up your website, making navigation effectively instant in most cases. This plugin is the easiest way of adding InstantClick to your WordPress theme.
 
 > Before visitors click on a link, they hover over that link. Between these two events, 200 ms to 300 ms usually pass by ([test yourself here](http://instantclick.io/click-test)). InstantClick makes use of that time to preload the page, so that the page is already there when you click.
 
-This plugin simply adds InstantClick to your website using the WordPress scripts API. For further tweaking, see the Installation notes.
+See [InstantClick.io](http://instantclick.io/) for more information on InstantClick.
+
+This plugin simply adds InstantClick to your website using the WordPress scripts API. For further tweaking, see the [announcement post](http://cacheglove.com/2014/05/speed-up-your-wordpress-site-with-instantclick/).
 
 == Installation ==
 
@@ -45,5 +45,10 @@ None yet. Checkout the [support forum](http://wordpress.org/support/plugin/insta
 
 == Changelog ==
 
+= 1.0.1 =
+
+* Fix warning in script handle sanitation
+
 = 1.0 =
+
 * Initial release to WP.org plugin repository.
