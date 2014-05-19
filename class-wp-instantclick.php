@@ -8,7 +8,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
     class WP_InstantClick
     {
-        const VERSION = '0.9';
+        const VERSION = '1.0';
         const SCRIPT_HANDLE = 'instantclick';
 
         private static $no_instant = array( self::SCRIPT_HANDLE );
@@ -21,14 +21,16 @@ if ( !class_exists( 'WP_InstantClick' ) ):
                 return;
 
             self::_add_action_or_do( 'init', array( __CLASS__, '_register_scripts' ), 1 );
-            self::_add_action_or_do( 'wp_enqueue_scripts', array( __CLASS__, '_enqueue_scripts' ), 1 );
+
+            if ( !is_admin() )
+                self::_add_action_or_do( 'wp_enqueue_scripts', array( __CLASS__, '_enqueue_scripts' ), 1 );
 
             self::$_enabled = true;
         }
 
             private static function _add_action_or_do( $hook, $callback, $priority = 10 ) {
                 if ( did_action( $hook ) || doing_action( $hook ) )
-                    call_user_func_array( $callback );
+                    call_user_func( $callback );
                 else
                     add_action( $hook, $callback, $priority );
             }
@@ -59,7 +61,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
         public static function _register_scripts() {
             $min = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-            wp_register_script( self::SCRIPT_HANDLE, self::_get_url() . "js/instantclick$min.js", array(), '3.0.1', true );
+            wp_register_script( self::SCRIPT_HANDLE, self::get_url() . "js/instantclick$min.js", array(), '3.0.1', true );
         }
 
             /**
@@ -67,7 +69,7 @@ if ( !class_exists( 'WP_InstantClick' ) ):
              * so we need to find out the url to the current folder in a
              * roundabout way.
              */
-            private static function _get_url() {
+            public static function get_url() {
                 // get and normalize framework dirname
                 $dirname = str_replace( '\\' ,'/', dirname( __FILE__ ) ); // standardize slash
                 $dirname = preg_replace( '|/+|', '/', $dirname );       // normalize duplicate slash
@@ -104,11 +106,13 @@ if ( !class_exists( 'WP_InstantClick' ) ):
 
         public static function _output_script_init() {
             ?>
+
             <script data-no-instant>
                 <?php do_action( 'instantclick_before_init' ); ?>
 
                 InstantClick.init(<?php echo self::$_preload_method ?>);
                 <?php do_action( 'instantclick_after_init' ); ?>
+
             </script>
             <?php
         }
