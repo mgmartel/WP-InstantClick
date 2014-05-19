@@ -138,12 +138,12 @@ class WP_InstantClick_Options
     }
 
     public function load_settings() {
-        $this->settings = shortcode_atts( array(
+        $this->settings = shortcode_atts( apply_filters( 'instantclick_defaults', array(
             'before_init' => '',
             'after_init'  => '',
             'preload_on'  => 'hover',
             'no_instant_scripts' => array()
-        ), (array) get_option( self::SLUG ) );
+        ) ), (array) get_option( self::SLUG ) );
     }
 
     public function sanitize_settings( $settings ) {
@@ -153,12 +153,12 @@ class WP_InstantClick_Options
 
         $allowed_preload_values = array( 'hover', '50', '100', 'mousedown' );
 
-        $settings = array(
+        $settings = apply_filters( 'instantclick_sanitize_settings', array(
             'before_init' => $sanitize_js( $settings['before_init'] ),
             'after_init'  => $sanitize_js( $settings['after_init'] ),
             'preload_on'  => in_array( $settings['preload_on'], $allowed_preload_values ) ? $settings['preload_on'] : 'hover',
             'no_instant_scripts' => array_map( 'trim', explode( ",", str_replace( "\n", ',', $settings['no_instant_scripts'] ) ) )
-        );
+        ), $settings );
 
         return $settings;
     }
