@@ -153,14 +153,16 @@ class WP_InstantClick_Options
 
         $allowed_preload_values = array( 'hover', '50', '100', 'mousedown' );
 
-        $settings = apply_filters( 'instantclick_sanitize_settings', array(
+        //var_dump( $settings ); die;
+        if ( is_array( $settings['no_instant_scripts'] ) )
+            $settings['no_instant_scripts'] = implode( ',', $settings['no_instant_scripts'] );
+
+        return apply_filters( 'instantclick_sanitize_settings', array(
             'before_init' => $sanitize_js( $settings['before_init'] ),
             'after_init'  => $sanitize_js( $settings['after_init'] ),
             'preload_on'  => in_array( $settings['preload_on'], $allowed_preload_values ) ? $settings['preload_on'] : 'hover',
             'no_instant_scripts' => array_map( 'trim', explode( ",", str_replace( "\n", ',', $settings['no_instant_scripts'] ) ) )
         ), $settings );
-
-        return $settings;
     }
 
     public function section_general_desc() {
@@ -209,9 +211,14 @@ class WP_InstantClick_Options
     }
 
     public function field_no_instant_scripts() {
+        $scripts = $this->settings['no_instant_scripts'];
+        
+        if ( !is_array( $scripts ) )
+            $scripts = array();
+
         ?>
             <textarea name="<?php echo self::SLUG ?>[no_instant_scripts]" class="instantclick-no-instant-scripts"><?php
-                echo implode( "\n", $this->settings['no_instant_scripts'] );
+                echo implode( "\n", $scripts );
                 ?></textarea>
         <?php
     }
