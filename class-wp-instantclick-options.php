@@ -147,19 +147,15 @@ class WP_InstantClick_Options
     }
 
     public function sanitize_settings( $settings ) {
-        $sanitize_js = function( $input ) {
-            return trim( (string) $input );
-        };
 
         $allowed_preload_values = array( 'hover', '50', '100', 'mousedown' );
 
-        //var_dump( $settings ); die;
         if ( is_array( $settings['no_instant_scripts'] ) )
             $settings['no_instant_scripts'] = implode( ',', $settings['no_instant_scripts'] );
 
         return apply_filters( 'instantclick_sanitize_settings', array(
-            'before_init' => $sanitize_js( $settings['before_init'] ),
-            'after_init'  => $sanitize_js( $settings['after_init'] ),
+            'before_init' => trim( (string) $settings['before_init'] ),
+            'after_init'  => trim( (string) $settings['after_init'] ),
             'preload_on'  => in_array( $settings['preload_on'], $allowed_preload_values ) ? $settings['preload_on'] : 'hover',
             'no_instant_scripts' => array_map( 'trim', explode( ",", str_replace( "\n", ',', $settings['no_instant_scripts'] ) ) )
         ), $settings );
@@ -212,7 +208,7 @@ class WP_InstantClick_Options
 
     public function field_no_instant_scripts() {
         $scripts = $this->settings['no_instant_scripts'];
-        
+
         if ( !is_array( $scripts ) )
             $scripts = array();
 
