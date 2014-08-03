@@ -3,7 +3,7 @@ Contributors: Mike_Cowobo
 Tags: performance, instantclick, links
 Requires at least: 3.9
 Tested up to: 3.9.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -44,6 +44,10 @@ None yet. Checkout the [support forum](http://wordpress.org/support/plugin/insta
 1. The InstantClick settings page
 
 == Changelog ==
+
+= 1.0.2 =
+
+* PHP 5.2 compatibility
 
 = 1.0.1 =
 
